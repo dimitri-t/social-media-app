@@ -1,23 +1,21 @@
 import Post from './Post';
-
-const posts = [
-  {
-    id: '123',
-    username: 'asdas',
-    userImg: 'https://links.papareact.com/3ke',
-    img: 'https://links.papareact.com/3ke',
-    caption: 'this is dope',
-  },
-  {
-    id: '234',
-    username: 'sdasdasd',
-    userImg: 'https://links.papareact.com/3ke',
-    img: 'https://links.papareact.com/3ke',
-    caption: 'this is dodsddpe',
-  },
-];
+import { useState, useEffect } from 'react';
+import faker from '@faker-js/faker';
 
 function Posts() {
+  const [posts, setPosts] = useState([]);
+
+  // Nice way of generating fake data from faker and storing it to an
+  // array without using a for loop
+  useEffect(() => {
+    const fakePosts = [...Array(5)].map((_, i) => ({
+      ...faker.helpers.contextualCard(),
+      // Changing the id to the array index
+      id: i,
+    }));
+    setPosts(fakePosts);
+  }, []);
+
   return (
     <div>
       {posts.map((post) => {
@@ -26,9 +24,9 @@ function Posts() {
             key={post.id}
             id={post.id}
             username={post.username}
-            userImg={post.userImg}
+            avatar={post.avatar}
             caption={post.caption}
-            img={post.img}
+            img={post.avatar}
           />
         );
       })}
