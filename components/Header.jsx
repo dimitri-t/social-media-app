@@ -2,6 +2,7 @@ import {
   SearchIcon,
   PlusCircleIcon,
   HeartIcon,
+  MenuIcon,
 } from '@heroicons/react/outline';
 import { HomeIcon } from '@heroicons/react/solid';
 
@@ -25,11 +26,14 @@ function Header() {
           />
         </div>
       </div>
+
       {/* Right */}
-      <div className='flex space-x-4'>
-        <HomeIcon className='h-7 w-7' />
-        <PlusCircleIcon className='h-7 w-7' />
-        <HeartIcon className='h-7 w-7' />
+      <div className='flex justify-end space-x-4 items-center'>
+        <HomeIcon className='navBtn ' />
+        <PlusCircleIcon className='navBtn' />
+        <HeartIcon className='navBtn' />
+        <MenuIcon className='h-6 md:hidden cursor-pointer' />
+        <div className='h-8 w-8 bg-green-400 rounded-full cursor-pointer'></div>
       </div>
     </div>
   );
