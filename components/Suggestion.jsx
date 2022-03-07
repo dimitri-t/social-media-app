@@ -5,7 +5,7 @@ function Suggestion({ avatar, username }) {
         <img src={avatar} className='rounded-full w-10 h-10 mr-2' alt='' />
         <h1 className='font-semibold truncate'>{username}</h1>
       </div>
-      <h1 className='text-blue-400 font-bold text-sm ml-5'>Follow</h1>
+      <button className='text-blue-400 font-bold text-sm ml-5'>Follow</button>
     </div>
   );
 }

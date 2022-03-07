@@ -5,13 +5,26 @@ import {
   MenuIcon,
 } from '@heroicons/react/outline';
 import { HomeIcon } from '@heroicons/react/solid';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 function Header() {
+  // Get session data
+  const { data: session } = useSession();
+
+  // Get the router object
+  const router = useRouter();
+
   return (
     <div className='flex justify-between items-center pr-6 pl-6 shadow-sm border-b bg-white sticky top-0 z-50'>
       {/* Left */}
       <div>
-        <h1 className='font-semibold text-2xl'>App</h1>
+        <h1
+          onClick={() => router.push('/')}
+          className='cursor-pointer font-semibold text-2xl'
+        >
+          App
+        </h1>
       </div>
       {/* Middle */}
       <div>
@@ -27,14 +40,23 @@ function Header() {
         </div>
       </div>
 
-      {/* Right */}
-      <div className='flex justify-end space-x-4 items-center'>
-        <HomeIcon className='navBtn ' />
-        <PlusCircleIcon className='navBtn' />
-        <HeartIcon className='navBtn' />
-        <MenuIcon className='h-6 md:hidden cursor-pointer' />
-        <div className='h-8 w-8 bg-green-400 rounded-full cursor-pointer'></div>
-      </div>
+      {/* Right part, only show if signed in */}
+      {session ? (
+        <div className='flex justify-end space-x-4 items-center'>
+          <HomeIcon onClick={() => router.push('/')} className='navBtn ' />
+          <PlusCircleIcon className='navBtn' />
+          <HeartIcon className='navBtn' />
+          <MenuIcon className='h-6 md:hidden cursor-pointer' />
+          <img
+            onClick={signOut}
+            src={session?.user?.image}
+            alt=''
+            className='h-8 w-8 rounded-full cursor-pointer'
+          />
+        </div>
+      ) : (
+        <button onClick={signIn}>Sign In</button>
+      )}
     </div>
   );
 }
