@@ -7,10 +7,15 @@ import {
 import { HomeIcon } from '@heroicons/react/solid';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../atoms/modalAtom';
 
 function Header() {
   // Get session data
   const { data: session } = useSession();
+
+  // modal state from recoil
+  const [open, setOpen] = useRecoilState(modalState);
 
   // Get the router object
   const router = useRouter();
@@ -44,7 +49,7 @@ function Header() {
       {session ? (
         <div className='flex justify-end space-x-4 items-center'>
           <HomeIcon onClick={() => router.push('/')} className='navBtn ' />
-          <PlusCircleIcon className='navBtn' />
+          <PlusCircleIcon onClick={() => setOpen(true)} className='navBtn' />
           <HeartIcon className='navBtn' />
           <MenuIcon className='h-6 md:hidden cursor-pointer' />
           <img
