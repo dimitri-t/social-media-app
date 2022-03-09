@@ -1,6 +1,6 @@
 ## A social media app clone
 
-Built using NextJS, ReactJS and styled with TailwindCSS
+I built this app to get more comfortable using ReactJS by using it with a more advanced framework, implement a NoSQL database, learn about state management and learn how to create a full responsive app
 
 Technologies used and implemented in this build:
 
