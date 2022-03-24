@@ -3,7 +3,7 @@
 I built this app to get more comfortable using ReactJS by using it with a more advanced framework, implement a NoSQL database, learn about state management and learn how to create a full responsive app
 
 ## Demo
-![project-demo](https://user-images.githubusercontent.com/65437778/159904299-b9177465-15e4-47af-8a7a-5eacd3ea0aa1.gif)
+![project-demo](https://user-images.githubusercontent.com/65437778/159904736-f346ba93-6a65-4bf8-a424-648615a789c9.gif)
 
 Technologies used and implemented in this build:
 
@@ -22,4 +22,3 @@ To run the project simply run the following commands:
 - npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser
-
